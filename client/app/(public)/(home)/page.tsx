@@ -1,9 +1,8 @@
-import Navbar from "@/components/Navbar";
+
 
 export default function Home() {
   return (
-    <>
-      <Navbar />
+    <>      
       <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-blue-100 to-white">
         <h1 className="text-4xl font-bold text-blue-700 mb-4">Welcome to music-platform</h1>
         <h3 className="text-xl text-gray-700 mb-2">The best tracks are collected here!</h3>
