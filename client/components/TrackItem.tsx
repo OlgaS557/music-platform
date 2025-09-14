@@ -57,12 +57,11 @@ export default function TrackItem({ track }: TrackItemProps) {
             </button>
             {/*Cover + Info*/}
             <div className="flex items-center cursor-pointer">
-                <Image 
-                    width={50} 
-                    height={50} 
+                <Image  
                     src={track.picture ? 'http://localhost:5000/'  +  track.picture : tiger} 
                     alt={track.name}
-                    style={{ height: "50px", width: "auto" }}
+                    width={50}
+                    height={50}                    
                 />
                 <div className="flex-1 ml-4 w-50">
                     <h2 className="text-xl font-semibold text-blue-700">{track.name}</h2>
