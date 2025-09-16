@@ -9,6 +9,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { usePlayerStore } from "@/app/shared/store/player.store";
 import { formatTime } from "@/utils/formatTime";
+import { useDeleteTrack } from "@/hooks/api/useDeleteTrack";
 
 
 interface TrackItemProps {
@@ -17,6 +18,7 @@ interface TrackItemProps {
 
 export default function TrackItem({ track }: TrackItemProps) {
     const router = useRouter();
+    const { mutate: deleteTrack, isPending } = useDeleteTrack();
 
     const active = usePlayerStore((s) => s.active);
     const pause = usePlayerStore((s) => s.pause);
@@ -37,6 +39,13 @@ export default function TrackItem({ track }: TrackItemProps) {
       // если другой трек — делаем его активным и запускаем
       setActive(track);
       setPause(false);
+    }
+  };
+
+  const handleDeleteClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); // не переходить на страницу
+    if (confirm(`Удалить трек "${track.name}"?`)) {
+      deleteTrack(track._id);
     }
   };
 
@@ -75,16 +84,14 @@ export default function TrackItem({ track }: TrackItemProps) {
                         {formatTime(currentTime)} / {formatTime(duration)}
                     </div>
                 )}
-                <button className="ml-auto"
-                    onClick={(e) => e.stopPropagation()}
-                    //TODO: delete track
-                >
-                    <Image src={DeleteIcon} alt="Delete" width={20} height={20}
+                <button onClick={handleDeleteClick} disabled={isPending} className="ml-auto">
+                    {isPending ? "..." : (
+                        <Image src={DeleteIcon} alt="Delete" width={20} height={20}
                         className="cursor-pointer"
-                    />
+                        />
+                    )}
                 </button >
             </div>
-
         </div>
     )
 }
