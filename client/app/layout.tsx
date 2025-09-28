@@ -16,7 +16,13 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Music Platform",
   description: "A platform to explore and enjoy music tracks",
+  keywords: ["music", "tracks", "audio", "platform", "songs"],
 };
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+}
 
 export default function RootLayout({
   children,
