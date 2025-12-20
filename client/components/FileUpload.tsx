@@ -23,7 +23,7 @@ export default function FileUpload({setFile, accept, children}: FileUploadProps)
                 accept={accept}
                 ref={ref}
                 onChange={onChange}
-                className="hidden"
+                // className="hidden"
             />
             {children}
         </div>
