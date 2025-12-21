@@ -2,13 +2,14 @@ import { notFound } from "next/navigation";
 import TrackDetails from "./TrackDetails";
 import type { ITrack } from "@/app/shared/types/track.interface";
 import type { Metadata } from "next";
+import { API_URL } from "@/hooks/api/api";
 
 interface TrackIdPageProps {
     params: Promise<{ trackId: string }>;
 }
 
 async function getTrack(trackId: string): Promise<ITrack> {
-    const res = await fetch(`http://localhost:5000/tracks/${trackId}`, {
+    const res = await fetch(`${API_URL}/tracks/${trackId}`, {
         cache: "no-store",
     });
     if (!res.ok) throw new Error("Failed to fetch track");;

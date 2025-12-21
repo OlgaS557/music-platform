@@ -10,7 +10,7 @@ export const useFormField = (initialValue: string) => {
     }
 
     return {
-        value, onChange, setValue
+        value, onChange, setValue,
     }
 };
 

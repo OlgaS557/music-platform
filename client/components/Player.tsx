@@ -6,6 +6,7 @@ import Volume from "@/assets/icons/volume.svg";
 import TrackProgress from "./TrackProgress";
 import { usePlayerStore } from "@/app/shared/store/player.store";
 import { useEffect, useRef } from "react";
+import { API_URL } from "@/hooks/api/api";
 
 
 export default function Player() {
@@ -23,7 +24,8 @@ export default function Player() {
         }
 
         const audio = audioRef.current;
-        audio.src = `http://localhost:5000/${active.audio}`;
+        audio.src = `${API_URL}${active.audio.startsWith('/') ? '' : '/'}${active.audio}`;
+        console.log(active.audio);
         audio.volume = volume / 100;
 
         audio.onloadedmetadata = () => {
@@ -87,9 +89,12 @@ export default function Player() {
                 <Image
                     src={pause ? Play : Pause}
                     alt={pause ? "Play" : "Pause"}
-                    width={100}
-                    height={100}
-                    className="cursor-pointer"
+                    // width={100}
+                    // height={100}
+                    // className="cursor-pointer"
+                    width={40}
+                    height={40}
+                    className="cursor-pointer w-auto h-auto"
                 />
             </button>
             <div className="grid grid-cols-1 p-3 w-50">
@@ -101,7 +106,10 @@ export default function Player() {
             />
             <Image
                 src={Volume} alt="Volume"
-                className="cursor-pointer ml-auto"
+                // className="cursor-pointer ml-auto"
+                width={24}
+                height={24}
+                className="cursor-pointer ml-auto w-auto h-auto"
             />
             <TrackProgress left={volume} right={100}
                 onChange={changeVolume}

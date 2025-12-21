@@ -2,9 +2,10 @@
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
+import { API_URL } from "./api";
 
 const deleteTrack = async (id: string) => {
-  await axios.delete(`http://localhost:5000/tracks/${id}`);
+  await axios.delete(`${API_URL}/tracks/${id}`);
 };
 
 export const useDeleteTrack = () => {

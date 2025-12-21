@@ -5,13 +5,14 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import CommentForm from "./CommentForm";
 import type { IComment } from "@/app/shared/types/track.interface";
+import { API_URL } from "@/hooks/api/api";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function TrackDetails({ trackId }: { trackId: string }) {
      const router = useRouter();
 
-    const {data: track, mutate} = useSWR(`http://localhost:5000/tracks/${trackId}`, fetcher);
+    const {data: track, mutate} = useSWR(`${API_URL}/tracks/${trackId}`, fetcher);
 
     if(!track) return <div>Loading...</div>;
 
@@ -22,13 +23,13 @@ export default function TrackDetails({ trackId }: { trackId: string }) {
                     onClick={() => router.push('/tracks')}>
                     back to tracks
                 </MyButton>
-                <div className="container mx-auto w-900 p-4 bg-white rounded-lg shadow-md mt-10">
+                <div className="p-4 bg-white rounded-lg shadow-md mt-10">
                     <div className="flex items-center">
                         <Image
-                            src={'http://localhost:5000/' + track.picture}
+                            src={`${API_URL}/${track.picture}`}
                             alt={track.name}
-                            width={50}
-                            height={50}                            
+                            width={200}
+                            height={200}                                                     
                         />
                         <div className="ml-5">
                             <h1 className="text-2xl font-bold text-blue-700">Track's name - {track.name}</h1>

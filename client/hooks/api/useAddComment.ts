@@ -1,5 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
+import { API_URL } from "./api";
 
 interface CreateCommentDto {
     username: string;
@@ -13,7 +14,7 @@ export const useAddComment = (options?: {
 }) => {
     return useMutation({
         mutationFn: async (data: CreateCommentDto) => {
-            const response = await axios.post("http://localhost:5000/tracks/comment", data);
+            const response = await axios.post(`${API_URL}/tracks/comment`, data);
             return response.data;
         },
         onSuccess: options?.onSuccess,
@@ -21,5 +22,5 @@ export const useAddComment = (options?: {
     });
 };
 
-
+// const response = await axios.post("http://localhost:5000/tracks/comment"
 

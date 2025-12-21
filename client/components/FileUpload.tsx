@@ -17,7 +17,7 @@ export default function FileUpload({setFile, accept, children}: FileUploadProps)
     }
 
     return(
-        <div onClick={() => ref.current?.click()} className="cursor-pointer">
+        <div onClick={() => ref.current?.click()}>
             <input 
                 type="file"
                 accept={accept}

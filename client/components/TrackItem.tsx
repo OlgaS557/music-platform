@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { usePlayerStore } from "@/app/shared/store/player.store";
 import { formatTime } from "@/utils/formatTime";
 import { useDeleteTrack } from "@/hooks/api/useDeleteTrack";
+import { API_URL } from "@/hooks/api/api";
 
 
 interface TrackItemProps {
@@ -67,10 +68,10 @@ export default function TrackItem({ track }: TrackItemProps) {
             {/*Cover + Info*/}
             <div className="flex items-center cursor-pointer">
                 <Image  
-                    src={track.picture ? 'http://localhost:5000/'  +  track.picture : tiger} 
+                    src={track.picture ? `${API_URL}/${track.picture}` : tiger} 
                     alt={track.name}
                     width={50}
-                    height={50}                    
+                    height={50}                                       
                 />
                 <div className="flex-1 ml-4 w-50">
                     <h2 className="text-xl font-semibold text-blue-700">{track.name}</h2>
@@ -87,7 +88,7 @@ export default function TrackItem({ track }: TrackItemProps) {
                 <button onClick={handleDeleteClick} disabled={isPending} className="ml-auto">
                     {isPending ? "..." : (
                         <Image src={DeleteIcon} alt="Delete" width={20} height={20}
-                        className="cursor-pointer"
+                        className="cursor-pointer w-auto h-auto"
                         />
                     )}
                 </button >

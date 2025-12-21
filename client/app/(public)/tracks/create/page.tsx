@@ -60,19 +60,22 @@ export default function CreateTrackPage() {
                         <form>
                             <h2>Step 1: Info Track</h2>
                             <input
-                                {...name}
+                                value={name.value}
+                                onChange={name.onChange}
                                 type="text"
                                 placeholder="Track Name"
                                 className="w-full p-2 border border-gray-300 rounded-md mb-4"
                             />
                             <input
-                                {...artist}
+                                value={artist.value}
+                                onChange={artist.onChange}
                                 type="text"
                                 placeholder="Artist Name"
                                 className="w-full p-2 border border-gray-300 rounded-md mb-4"
                             />
                             <textarea
-                                {...text}
+                                value={text.value}
+                                onChange={text.onChange}
                                 placeholder="Track Description"
                                 rows={3}
                                 className="w-full p-2 border border-gray-300 rounded-md mb-4"
@@ -84,7 +87,7 @@ export default function CreateTrackPage() {
                             setFile={setPicture}
                             accept="image/*"
                         >
-                            <button>Upload cover</button>
+                            <div className="cursor-pointer w-30 p-2 text-white bg-blue-600 hover:bg-blue-700">Upload cover</div>
                         </FileUpload>
                     }
                     {activeStep === 2 &&
@@ -92,7 +95,7 @@ export default function CreateTrackPage() {
                             setFile={setAudio}
                             accept="audio/*"
                         >
-                            <button>Upload audio</button>
+                            <div className="cursor-pointer w-30 p-2 text-white bg-blue-600 hover:bg-blue-700">Upload audio</div>
                         </FileUpload>
                     }
                 </StepWrapper>

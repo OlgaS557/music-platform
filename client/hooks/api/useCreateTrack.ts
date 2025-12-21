@@ -1,5 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
+import { API_URL } from "./api";
 
 interface ICreateTrackDto {
     name: string;
@@ -25,10 +26,12 @@ export const useCreateTrack = (options?: {
             if(data.audio) {
                 formData.append('audio', data.audio);
             }
-
-            const response = await axios.post("http://localhost:5000/tracks", formData, {
+            // const response = await axios.post("http://localhost:5000/tracks"
+            // Для диплоя на Vercel:
+            const response = await axios.post(`${API_URL}/tracks`, formData, {
                 headers: { "Content-Type": "multipart/form-data" },
             });
+            console.log("API URL:", API_URL);
             return response.data;
         },
         onSuccess: options?.onSuccess,
