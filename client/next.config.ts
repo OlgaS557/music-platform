@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
       // production (Render)
       {
         protocol: "https",
-        hostname: "*.onrender.com",
+        hostname: "music-platform-ys1b.onrender.com",
         pathname: "/image/**",
       },
     ],
