@@ -7,7 +7,11 @@ const start = async () => {
     const PORT = process.env.PORT || 5000;
     const app = await NestFactory.create(AppModule);
     app.enableCors({
-      origin: true,
+      origin: [
+      'http://localhost:3000',
+      'https://music-platform-five-sooty.vercel.app',
+    ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
       credentials: true,
     });
     await app.listen(PORT, () => console.log(`server started on port ${PORT}`))
