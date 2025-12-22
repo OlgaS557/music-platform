@@ -41,7 +41,7 @@ export default function TracksListPage() {
                     <p className='text-center text-gray-500 mt-10'>Loading...</p>
                 ) : (
                     displayedTracks && displayedTracks.length === 0 ? (
-                        <p className='text-center text-gray-500 mt-10'>No tracks found</p>
+                        <p className='text-center text-gray-500 mt-10'>No tracks yet. Upload your first one 🎵</p>
                     ) : (
                         <TrackList tracks={displayedTracks ?? []} />
                     )
