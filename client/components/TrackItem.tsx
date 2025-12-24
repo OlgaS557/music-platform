@@ -71,7 +71,7 @@ export default function TrackItem({ track }: TrackItemProps) {
                     src={track.picture ? `${API_URL}/${track.picture}` : tiger} 
                     alt={track.name}
                     width={50}
-                    height={50}                                       
+                    height={50}                                                           
                 />
                 <div className="flex-1 ml-4 w-50">
                     <h2 className="text-xl font-semibold text-blue-700">{track.name}</h2>

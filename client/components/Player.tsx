@@ -89,9 +89,6 @@ export default function Player() {
                 <Image
                     src={pause ? Play : Pause}
                     alt={pause ? "Play" : "Pause"}
-                    // width={100}
-                    // height={100}
-                    // className="cursor-pointer"
                     width={40}
                     height={40}
                     className="cursor-pointer w-auto h-auto"
@@ -106,7 +103,6 @@ export default function Player() {
             />
             <Image
                 src={Volume} alt="Volume"
-                // className="cursor-pointer ml-auto"
                 width={24}
                 height={24}
                 className="cursor-pointer ml-auto w-auto h-auto"

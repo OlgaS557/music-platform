@@ -26,7 +26,14 @@ export class TrackService {
             throw new Error('Count and offset must be non-negative')
         }
         const tracks = await this.trackModel.find().skip(offset).limit(count);
-        return tracks;
+        return tracks.map(track => {
+            const obj = track.toObject();
+            return {
+                ...obj,
+                picture: obj.picture,
+                audio: obj.audio,
+            };
+        });
     }
     async search(query: string): Promise<Track[]> {
         const tracks = await this.trackModel.find({
