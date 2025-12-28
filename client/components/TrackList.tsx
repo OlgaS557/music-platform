@@ -1,7 +1,6 @@
 "use client";
 import type { ITrack } from "@/app/shared/types/track.interface";
 import TrackItem from "./TrackItem";
-import { useTracks } from "@/hooks/api/useTracks";
 
 interface TrackListProps {
     tracks: ITrack[];

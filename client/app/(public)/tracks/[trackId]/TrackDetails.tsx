@@ -26,7 +26,8 @@ export default function TrackDetails({ trackId }: { trackId: string }) {
                 <div className="p-4 bg-white rounded-lg shadow-md mt-10">
                     <div className="flex items-center">
                         <Image
-                            src={`${API_URL}/${track.picture}`}
+                            // src={`${API_URL}/${track.picture}`}
+                            src={track.picture}
                             alt={track.name}
                             width={200}
                             height={200}                                                     

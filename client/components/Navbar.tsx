@@ -4,7 +4,7 @@ import { useState } from "react";
 import { menuItems } from "@/app/shared/data/navbar.data";
 
 export default function Navbar() {
-    const [open, setOpen] = useState(false);    
+    const [open, setOpen] = useState(false);
     const router = useRouter();
 
     return (
@@ -35,14 +35,14 @@ export default function Navbar() {
                     >
                         ×
                     </button>
-                    {menuItems.map(({ href, label}, index) => (
+                    {menuItems.map(({ href, label }, index) => (
                         <a
                             key={href}
                             className="text-lg font-semibold hover:text-blue-600 duration-500 hover:translate-x-1 cursor-pointer"
                             onClick={() => {
                                 router.push(href);
                                 setOpen(false);
-                            } }
+                            }}
                         >
                             {label}
                         </a>

@@ -6,8 +6,6 @@ import Volume from "@/assets/icons/volume.svg";
 import TrackProgress from "./TrackProgress";
 import { usePlayerStore } from "@/app/shared/store/player.store";
 import { useEffect, useRef } from "react";
-import { API_URL } from "@/hooks/api/api";
-
 
 export default function Player() {
     const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -24,8 +22,10 @@ export default function Player() {
         }
 
         const audio = audioRef.current;
-        audio.src = `${API_URL}${active.audio.startsWith('/') ? '' : '/'}${active.audio}`;
-        console.log(active.audio);
+        // audio.src = `${API_URL}${active.audio.startsWith('/') ? '' : '/'}${active.audio}`; // was before changing to cloudinary
+        if (!active?.audio) return;
+        audio.src = active.audio; // https://res.cloudinary.com/.../video/upload/...mp3
+        console.log(active.audio);                        
         audio.volume = volume / 100;
 
         audio.onloadedmetadata = () => {
@@ -45,6 +45,9 @@ export default function Player() {
         if (!pause) {
             audio.play().catch((err) => console.error("Play error:", err));
         }
+        audio.onerror = () => {
+            console.error('Audio load error:', active.audio);
+        };
     }, [active]);
 
     const togglePlay = async () => {
@@ -85,7 +88,10 @@ export default function Player() {
 
     return (
         <div className="flex items-center fixed bottom-0 h-auto w-full bg-gray-200 pl-2.5 pr-2.5">
-            <button onClick={togglePlay}>
+            <button onClick={togglePlay}
+                disabled={!active?.audio}
+                className={!active?.audio ? 'opacity-50 cursor-not-allowed' : ''}
+            >
                 <Image
                     src={pause ? Play : Pause}
                     alt={pause ? "Play" : "Pause"}

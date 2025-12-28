@@ -36,9 +36,9 @@ export default function StepWrapper({ activeStep, children }: StepWrapperProps) 
                             <div
                                 className={`flex items-center justify-center w-10 h-10 rounded-full border-2 transition-colors duration-300 
                                 ${isCompleted || isActive
-                                    ? "bg-blue-600 border-blue-600 text-white"
-                                    : "border-gray-300 text-gray-500"
-                                }`}
+                                        ? "bg-blue-600 border-blue-600 text-white"
+                                        : "border-gray-300 text-gray-500"
+                                    }`}
                             >
                                 {isCompleted ? "✓" : index + 1}
                             </div>
@@ -47,9 +47,9 @@ export default function StepWrapper({ activeStep, children }: StepWrapperProps) 
                             <div
                                 className={`mt-2 text-sm font-medium transition-colors duration-300 
                                 ${isActive
-                                    ? "text-blue-600"
-                                    : "text-gray-500"
-                                }`}
+                                        ? "text-blue-600"
+                                        : "text-gray-500"
+                                    }`}
                             >
                                 {step}
                             </div>

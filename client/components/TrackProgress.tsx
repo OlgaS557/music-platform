@@ -16,8 +16,7 @@ export default function TrackProgress({left, right, onChange}: TrackProgressProp
                 min={0}
                 max={right}
                 value={left}
-                onChange={onChange}
-                
+                onChange={onChange}                
             />
             <div>
                 {left} / {right}

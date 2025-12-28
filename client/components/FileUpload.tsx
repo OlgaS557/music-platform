@@ -7,7 +7,7 @@ interface FileUploadProps {
     children: React.ReactNode;
 }
 
-export default function FileUpload({setFile, accept, children}: FileUploadProps) {
+export default function FileUpload({ setFile, accept, children }: FileUploadProps) {
     const ref = useRef<HTMLInputElement>(null);
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -16,16 +16,16 @@ export default function FileUpload({setFile, accept, children}: FileUploadProps)
         }
     }
 
-    return(
+    return (
         <div onClick={() => ref.current?.click()}>
-            <input 
+            <input
                 type="file"
                 accept={accept}
                 ref={ref}
                 onChange={onChange}
-                // className="hidden"
+            // className="hidden"
             />
             {children}
         </div>
-    ) 
+    )
 }
