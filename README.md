@@ -13,7 +13,9 @@ The project is built with **Next.js** on the client side and **NestJS** on the s
 - Store track data in MongoDB
 - View a list of all tracks
 - Play audio tracks in the browser
+- Leave comments on each track
 - Responsive UI
+- Full-stack architecture (Next.js + NestJS + MongoDB)
 
 ---
 
@@ -24,9 +26,10 @@ The project is built with **Next.js** on the client side and **NestJS** on the s
 - **React**
 - **TypeScript**
 - **Axios**
+- **Zustand**
 - **React Query**
 - **Tailwind CSS**
-- **Next/Image**
+- **Next**
 
 ### Backend
 - **NestJS**
